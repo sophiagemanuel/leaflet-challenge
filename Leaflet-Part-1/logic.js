@@ -9,12 +9,12 @@ d3.json(url).then(function (data){
 
 //Creating a function to determine the maker color by depth.
 function chooseColor(depth){
-    if (depth < 10) return 'green';
-    else if (depth < 30) return 'green-yellow';
-    else if (depth < 50) return 'yellow';
-    else if (depth < 70) return 'orange';
-    else if (depth < 90) return 'red';
-    else return 'cyan';
+    if (depth < 10) return '#00ff00'; //green
+    else if (depth < 30) return '#adff2f'; //green-yellow
+    else if (depth < 50) return '#ffff00'; //yellow
+    else if (depth < 70) return '#ffa500'; //orange
+    else if (depth < 90) return '#ff0000'; //red
+    else return '#00ffff'; //cyan
 }
 
 //Creating a function to determine maker size
@@ -65,12 +65,13 @@ function createFeatures(earthquakeData){
     let legend = L.control({position: 'bottomright'});
     legend.onAdd=function(){
         let div = L.DomUtil.create('div', 'info legend'),
-        depth = [0, 10, 30, 50, 70, 90];
-        div.innerHTML += "<h3 style='text-align: center'>Depth</h3>"
+        //Creating the depths set up our legend
+        depths = [0, 10, 30, 50, 70, 90];
+        div.innerHTML += "<h3 style='text-align: center'>Depth</h3>";
 
-        for (let i = 0; i < depth.length; i++){
+        for (let i = 0; i < depths.length; i++){
             div.innerHTML +=
-      '<i style="background:' + chooseColor(depth[i] + 1) + '"></i> ' + depth[i] + (depth[i + 1] ? '&ndash;' + depth[i + 1] + '<br>' : '+');
+            '<i style="background:' + chooseColor(depths[i] + 1) + '"></i> ' + depths[i] + (depths[i + 1] ? '&ndash;' + depths[i + 1] + '<br>' : '+');
         }
         return div;
     }
