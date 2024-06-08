@@ -14,7 +14,7 @@ function chooseColor(depth){
     else if (depth < 50) return '#ffff00'; //yellow
     else if (depth < 70) return '#ffa500'; //orange
     else if (depth < 90) return '#ff0000'; //red
-    else return '#00ffff'; //cyan
+    else return '#000000'; //black
 }
 
 //Creating a function to determine maker size
